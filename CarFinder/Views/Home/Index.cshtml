@@ -1,0 +1,169 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Angluar/Bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="Content/trNgGrid.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div ng-app="appCar">
+        <div ng-controller="ctrAppCar">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <select ng-model="selectedYear" ng-options="year for year in years" ng-change="getMakes()" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <select ng-model="selectedMake" ng-options="make for make in makes" ng-change="getModels()" ng-disabled="selectedYear==''" class="form-control"><option value="" disabled selected ng-hide="selectedMake">Select a make...</option></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <select ng-model="selectedModel" ng-options="model for model in models" ng-change="getTrims()" ng-disabled="selectedMake==''" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-change="getCars()" ng-disabled="selectedModel==''" class="form-control"></select>
+                            </div>
+                        </div><br /><br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-info" ng-click="getCars()">Get Car</button><br />
+                            </div>
+                        </div>
+                        <p style="font-size:20px; color:black">{{selectedYear + " " + selectedMake  + " " + selectedModel   + " " + selectedTrim}} </p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="color:black"><strong>{{cars.Recalls.Message}}</strong></div>
+
+
+                                <div ng-repeat="result in cars.Recalls.Results" style="color:black">
+
+                                    <h3>{{result.Component}}</h3>
+                                    <div><strong>Summary: </strong>{{result.Summary}}</div>
+                                    <div><strong>Consequence: </strong> {{result.Conequence}}</div>
+                                    <div><strong>Remedy: </strong>{{result.Remedy}}</div>
+                                    <div><strong>Notes: </strong>{{result.Notes}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <table class="col-md-12" id="recall-table" tr-ng-grid items="cars.Recalls.Results" page-items="5" style="color:black">
+                                        <thead>
+                                            <tr>
+                                                <th field-name="ReportReceiveDate" display-name="Reported"></th>
+                                                <th field-name="Manufacturer" display-name="Manufacturer"></th>
+                                                <th field-name="Component" display-name="Component"></th>
+                                                <!--<th field-name="model_trim" display-name="Trim"></th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <button class="btn btn=group-sm" ng-click="">Details</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <img src="{{cars.Image}}" width="800" height="600" class="img-responsive" style="border-color:black" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+
+                        <div class="container">
+                            <div class="row">
+                                <table class="col-md-12" id="car-table" tr-ng-grid items="carsList" page-items="5" style="color:black">
+                                    <thead>
+                                        <tr>
+                                            <th field-name="model_year" display-name="Year"></th>
+                                            <th field-name="make" display-name="Make"></th>
+                                            <th field-name="model_name" display-name="Model"></th>
+                                            <th field-name="model_trim" display-name="Trim"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <button class="btn btn=group-sm" ng-click="">view</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="Scripts/bootstrap.min.js"></script>*@
+    <script src="~/Angluar/Bootstrap/js/bootstrap.js"></script>
+
+    @*<script src="Scripts/angular.min.js"></script>*@
+    <script src="~/Scripts/angular.min.js"></script>
+    @*<script src="Scripts/angular-resource.min.js"></script>*@
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    @*<script src="Scripts/angular-ui-router.min.js"></script>*@
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
+
+    @*<script src="App/Car.js"></script>*@
+    <script src="~/Angluar/Car.js"></script>
+    @*<script src="App/Controllers/CarController.js"></script>*@
+    <script src="~/Angluar/Controllers/CarController.js"></script>
+    @*<script src="App/Services/CarServices.js"></script>*@
+    <script src="~/Angluar/Services/CarServices.js"></script>
+    @*<script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>*@
+    <script src="~/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+
+    <script src="Scripts/trNgGrid.min.js"></script>
+</body>
+</html>
+
+
+
+@*<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+        is an ideal platform for building RESTful applications on the .NET Framework.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+    </div>
+</div>*@
