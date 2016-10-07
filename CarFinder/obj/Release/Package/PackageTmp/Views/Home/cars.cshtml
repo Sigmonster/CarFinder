@@ -1,0 +1,78 @@
+﻿
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <select ng-model="selectedYear" ng-options="year for year in years" ng-change="getMakes()" class="form-control"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <select ng-model="selectedMake" ng-options="make for make in makes" ng-change="getModels()" ng-disabled="selectedYear==''" class="form-control"><option value="" disabled selected ng-hide="selectedMake">Select a make...</option></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <select ng-model="selectedModel" ng-options="model for model in models" ng-change="getTrims()" ng-disabled="selectedMake==''" class="form-control"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-change="getCars()" ng-disabled="selectedModel==''" class="form-control"></select>
+                </div>
+            </div><br /><br />
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-info" ng-click="getCars()">Get Car</button><br />
+                </div>
+            </div>
+            <p style="font-size:20px; color:white">{{selectedYear + " " + selectedMake  + " " + selectedModel   + " " + selectedTrim}} </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="color:white"><strong>{{cars.Recalls.Message}}</strong></div>
+
+
+                    <div ng-repeat="result in cars.Recalls.Results" style="color:white">
+
+                        <h3>{{result.Component}}</h3>
+                        <div><strong>Summary: </strong>{{result.Summary}}</div>
+                        <div><strong>Consequence: </strong> {{result.Conequence}}</div>
+                        <div><strong>Remedy: </strong>{{result.Remedy}}</div>
+                        <div><strong>Notes: </strong>{{result.Notes}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <img src="{{cars.Image}}" width="800" height="600" class="img-responsive" style="border-color:black" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="container">
+                <div class="row">
+                    <table class="col-md-12" id="car-table" tr-ng-grid items="cars" page-items="5" style="color:white">
+                        <thead>
+                            <tr>
+                                <th field-name="model_year" display-name="Year"></th>
+                                <th field-name="make" display-name="Make"></th>
+                                <th field-name="model_name" display-name="Model"></th>
+                                <th field-name="model_trim" display-name="Trim"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="btn btn=group-sm" ng-click="">view</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

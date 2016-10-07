@@ -8,7 +8,7 @@ namespace CarFinder.Models
 
     public class carViewModel
     {
-        public List<Car> Car { get; set; }
+        public Car Car { get; set; }
         public dynamic Recalls { get; set; }
         public string Image { get; set; }
     }

@@ -42,6 +42,13 @@ namespace CarFinder.Models
             return await this.Database.SqlQuery<string>("UniqueModelYears").ToListAsync();
         }
 
+        public async Task<List<string>> GetMakes(string year)
+        {
+            return await this.Database.SqlQuery<string>("MakesByYear @Year",
+                new SqlParameter("year", year))
+            .ToListAsync();
+
+        }
 
         public async Task<List<string>> GetModels(string year, string make)
         {
@@ -53,14 +60,14 @@ namespace CarFinder.Models
 
         public async Task<List<string>> GetTrims(string year, string make, string model)
         {
-            return await this.Database.SqlQuery<string>("ModelTrimsByYearMakeAndModel @Year, @Make, @Model_Name",
+            return await this.Database.SqlQuery<string>("ModelTrimsByYearMakeAndModel @Year, @Make, @ModelName",
                 new SqlParameter("year", year),
                 new SqlParameter("make", make),
-                new SqlParameter("model_name", model))
+                new SqlParameter("modelname", model))
                 .ToListAsync();
         }
 
-        public async Task<List<Car>> GetCarsByYearMakeModelTrim(string year, string make, string model, string trim)
+        public async Task<List<Car>> GetCars(string year, string make, string model, string trim)
         {
             return await this.Database.SqlQuery<Car>("CarsByYearMakeModelAndTrim @Year, @Make, @Model, @Trim",
                 new SqlParameter("year", year),

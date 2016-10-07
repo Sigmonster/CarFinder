@@ -296,10 +296,12 @@
     <Content Include="Angluar\Bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Angluar\Bootstrap\css\bootstrap.css" />
     <Content Include="Angluar\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Angluar\Bootstrap\css\trNgGrid.css" />
     <Content Include="Angluar\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Angluar\Bootstrap\js\bootstrap.js" />
     <Content Include="Angluar\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Angluar\Bootstrap\js\npm.js" />
+    <Content Include="Angluar\Bootstrap\js\trNgGrid.min.js" />
     <Content Include="Angluar\Car.js" />
     <Content Include="Angluar\Config.js" />
     <Content Include="Angluar\Controllers\CarController.js" />
@@ -398,6 +400,7 @@
     <Content Include="Content\ui-grid.woff" />
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.eot" />
+    <None Include="Properties\PublishProfiles\ajsigmon-CarFinder.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1155,6 +1158,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
